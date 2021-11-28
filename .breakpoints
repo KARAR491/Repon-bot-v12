@@ -1,0 +1,34 @@
+{
+  "files": {
+    "Commands/owner/server-list.js": [
+      {
+        "id": "11398c11-22cf-493f-89a5-fa65f4a5bc53",
+        "line": 21,
+        "version": 132,
+        "index": 410
+      }
+    ],
+    "events/music/error.js": [
+      {
+        "id": "68ff84bb-4110-4868-911a-9b97961500bc",
+        "line": 1,
+        "version": 1,
+        "index": 0
+      }
+    ],
+    "index.js": [
+      {
+        "id": "8610da96-8a21-4f02-8130-cf310132fe24",
+        "line": 39,
+        "version": 1726,
+        "index": 1248
+      },
+      {
+        "id": "548c7b66-263c-4a31-957e-342b5bf20b46",
+        "line": 85,
+        "version": 1726,
+        "index": 2941
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+
+{
+  "ar":{
+    "rad":"تجربه بلعربي"
+  },
+  "en":{
+    "rad":"test at english"
+  }, 
+"ar":{
+  "rolea": "✅ - **تم اضافة رتبة الى حساب **"
+},
+  "en":{
+    "rolea":"✅ - **Done add role to the user **"
+  },
+  "ar":{
+    "roled": "✅ - **تم ازالة الرتبة بنجاح **"
+  },
+  "en":{
+    "roled": "✅ - **Done remove role to the user **"
+  }
+}
