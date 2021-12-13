@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const { setNickname } = require("discord.js")
 const db = require("quick.db")
 module.exports = {
     info: {
@@ -8,12 +9,12 @@ module.exports = {
         coolDown: 1
     },
     run: async (message, args, prefix, client) => {
-     const uss = message.mentions.users.first() || message.author;
-      const cmd = message.content.split(" ")
+     const user = message.mentions.users.first()
+      const cmd = message.content.split(" ").slice(2).join(" ")
       const cmd2 = message.content.split(" ");
      
       
-      if(!uss) {
+      if(!user) {
 const lang = db.fetch(message.guild.id)
   if(lang === "ar") {
     message.channel.send("**منشن العضو**")
@@ -21,7 +22,7 @@ const lang = db.fetch(message.guild.id)
   message.channel.send("**mention the user**")
 return
       };
-      
+      /*
       if(!cmd) {
         const lang = db.fetch(message.guild.id)
   if(lang === "ar") {
@@ -30,21 +31,27 @@ return
   message.channel.send("**write new nick name**")
         return 
       };
-
-  if(!cmd[1]) {
+*/
+  if(!cmd) {
                 
     
     
+   const setNickname = require("discord.js")
     
-    
-client.users.cache.get(uss).setNickname(uss.username)  
-            return message.channel.send(' ' + uss.username + ' has been reseted nickname ')
-        }else if(cmd[1]) {
-            client.users.cache.get(uss).setNickname(cmd)  
-            return message.channel.send(`> Has been changed nick **${uss.username}** to **${cmd}**`)
-  } 
-         
-     /*
+message.guild.member(user).setNickname(user.username)  
+    const lang = db.fetch(message.guild.id)  
+      if(lang === "en") {     
+    message.channel.send(`**The username has been changed to its original name 
+The use : ${user.tag}
+original name : ${user.username}**`)   
+      }else if(lang === "ar") 
+        message.channel.send(`**تم تغير اسم العضو الى اسمه الاصلي
+العضو : ${user.username}
+اسمه : ${user.username}**`);   
+            return 
+        }else if(cmd) {
+     message.guild.member(user).setNickname(cmd) 
+  const lang = db.fetch(message.guild.id)
   if(lang === "ar") {
     message.channel.send(`**تم تغير اسم العضو
 العضو : ${user.tag}
@@ -53,8 +60,7 @@ client.users.cache.get(uss).setNickname(uss.username)
   message.channel.send(`**Done Username changed
 User : ${user}
 New nickname : ${cmd}**`)
-  
-  */
-      console.log(cmd2) 
+    return 
+  }
     }
     }

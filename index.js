@@ -1,4 +1,4 @@
- const express = require('express')().listen(3000);
+const express = require('express')().listen(3000);
 const Discord = require('discord.js')
 const db = require('quick.db');
 const moment = require("moment")
@@ -37,124 +37,8 @@ table.setHeading('Command', ' Load status');
 const config = require('./config/bot.json');
 const DisTube = require('distube');
 const disbut = require("discord-buttons")
-client.distube = new DisTube(client, {
-    searchSongs: false,
-    emitNewSongOnly: false,
-    leaveOnEmpty: true,
-    leaveOnFinish: true,
-    youtubeDL: true,
-    updateYouTubeDL: true,
-});
-client.queue = new Map()
-client.on('message', async message => {
-if (!message.content.startsWith(prefix)) return; // If message.member is uncached, cache it. 
-  if (!message.member) message.member = await message.guild.fetchMember(message); 
-  const args = message.content .slice(prefix.length) .trim() .split(/ +/g); 
-  const cmd = args.shift().toLowerCase();
-if (cmd.length === 0) return; // Get the command
-})
-
-// Create a new Ascii table
-client.on("message", async msg => {
-  if (msg.content === prefix + 'hep') {
-     let channel = msg.guild.channels.cache.find(c => c.id === '910147723091673159')////ايدي اي روم من سيرفرك
-let argss = msg.content.split(" ").slice('').join(" ");
-    const disbut = require('discord-buttons')
-    let button = new disbut.MessageButton()
-    .setStyle('gray')
-    .setLabel("📝 Sumbit Commands")
-    .setID("xx")
-    let button2 = new disbut.MessageButton()
-    .setStyle('gray')
-    .setLabel(" Admin Commands")
-    .setEmoji('892090597433823323')
-    .setID("ee")
-   let button5 = new disbut.MessageButton()
-    .setStyle('red')
-    .setLabel("❌ Remove ")
-    .setID('oo')
-   let button3 = new disbut.MessageButton()
- .setStyle('green')
-    .setLabel(" General Commands")
-    .setEmoji('891453513316565052')
-    .setID('ooo')
-let nn = await msg.channel.send({embed :new Discord.MessageEmbed()
-.setDescription(`Hello, please click on the following buttons📶
-`)
-.setThumbnail(client.user.avatarURL()).setAuthor('Commands')
-.setColor('#2cffd3'), buttons : [button3,button,button2,button5]})
-let collector = nn.createButtonCollector((button) => button.clicker.user.id === msg.author.id)
-
-collector.on('collect', (b)=> {
-  if (b.id === 'ooo') {
-    nn.edit({embed: new Discord.MessageEmbed()
-    .setColor('#2cffd3')
-    .setAuthor('Commands')
-    .setImage('https://cdn.discordapp.com/attachments/874755330351984671/891628664104570880/standard_15.gif')
-    .setDescription('**avatar : To Show Avatar**\n**user : To Show the info user**\n**tax [number] : To Show Tax Credit Probot**\n**$server : To Show Info Server**\n**bot : To Show Info Bot**\n**ping : To Show Speed internet**\n** allbots : to see all bot in server **\n**profile : From Look A Profile A User**\n**say : From Bot Say A Bot Write**\n')
-    .setThumbnail(client.user.avatarURL({dynamic: true})), buttons : [button3,button,button2,button5]})
-
-  } else if (b.id === 'ee') {
-    nn.edit({embed :new Discord.MessageEmbed()
-    .setColor('#2cffd3')
-    .setImage('https://cdn.discordapp.com/attachments/874755330351984671/891628664104570880/standard_15.gif')
-    .setTitle('<a:867324402151718932:892090597433823323> admin / moderation Commands <a:867324402151718932:892090597433823323>')
-    .setDescription(`**
-  > mute   
-  > unmute 
-  > unlock 
-  > lock   
-  > show   
-  > hide   
-  > ban    
-  > kick   
-  > unban  
-  > role  
- **`)
-    .setThumbnail(client.user.avatarURL({dynamic: true}))
-    .setColor('#2f3136') , buttons : [button3,button,button2,button5]})
-  } else if (b.id === 'xx') {
-    nn.edit({embed :new Discord.MessageEmbed().setDescription('**!تقديم**').setThumbnail(client.user.avatarURL()).setAuthor('Commands').setColor('#2f3136') , buttons : [button3,button,button2,button5]})
-  } else if (b.id === 'oo') {
-    nn.delete({timeout : 1000})
-}
-})
-  }
-  })
-
-client.on("message", (message) => {
-  let args = message.content.split(" ");
-  if (message.content.startsWith(prefix + "banner")) {
-    let member = message.mentions.users.first();
- 
-    if (args[0] && !args[1]) {
-      message.channel.startTyping();
-      setTimeout(() => {
-        message.channel.stopTyping();
-      }, Math.random() * (1 - 3) + 1 * 1000);
-      message.channel.send(new Discord.MessageEmbed().setTitle("**banner**").setURL(`https://api.abderrahmane300.repl.co/banner/${message.author.id}`).setImage(`https://api.abderrahmane300.repl.co/banner/${message.author.id}`))
-    }
-    if (member) {
-      message.channel.startTyping();
-      setTimeout(() => {
-        message.channel.stopTyping();
-      }, Math.random() * (1 - 3) + 1 * 1000);
-message.channel.send(new Discord.MessageEmbed().setTitle("**banner**").setURL(`https://api.abderrahmane300.repl.co/banner/${member.id}`).setImage(`https://api.abderrahmane300.repl.co/banner/${member.id}`))
-    } else if (args[1] && !member) {
-      nitro.fetchUser(args[1]).then((userr) => {
-        message.channel.stopTyping();
-        setTimeout(() => {
-          message.channel.stopTyping();
-        }, Math.random() * (1 - 3) + 1 * 1000);
-        message.channel.send(new Discord.MessageEmbed().setTitle("**banner**").setURL(`https://api.abderrahmane300.repl.co/banner/${user.id}`).setImage(`https://api.abderrahmane300.repl.co/banner/${user.id}`))
-      });
-    }
-  }
-}); 
-
-
-//const PREFIX = "$"
-
+client.login(process.env.token)
+/*
 client.on('guildMemberAdd' , async member => {
        // const invites = guildInvites.get(member.guild.id);
         const channel = db.get(`Welcoch_${member.guild.id}`)
@@ -169,7 +53,7 @@ let result2 = message.replace("[user]",member.user).replace("[userName]", member
        
 
 const usedinvite = newinvites.find(inv => cachedInvites.get(inv.code).uses < inv.uses);
-         */
+         
 client.channels.cache.get(channel).send(message)
  let role = db.fetch(`role_${member.guild.id}`);
 	if (!role) return;
@@ -178,6 +62,22 @@ client.channels.cache.get(channel).send(message)
         
 });
 
+*/
+
+client.on('guildMemberAdd' , async member => {
+    
+        const channel = db.get(`Welco_${member.guild.id}`)
+let message = db.get(`MsgWel_${member.guild.id}`)
+if(!message) return; 
+if(!channel) return; 
+let r = message.replace("[user]",member).replace("[userName]", member.username).replace("[userTag]", member.tag).replace("[guildName]", member).replace("[guildID]", member.guild.id).replace("[memberCount]", member.guild.memberCount)
+  client.channels.cache.get(channel).send(r)
+    let role = db.fetch(`role_${member.guild.id}`);
+	if (!role) return;
+	if (role === null) return;
+	member.roles.add(role);     
+        
+});
 
 
 client.on("messageReactionAdd", (reaction, user) => {
@@ -274,7 +174,8 @@ guild.leave()
 client.on("message", async message => {
   if(message.content.startsWith(`<@${client.user.id}>`) || message.content.startsWith(`<!@${client.user.id}>`)) {
 const pre = db.fetch(`prefix_${message.guild.id}`)
-    const lan = db.fetch (message.guild.id)
+  const lan = db.fetch (message.guild.id)
+    
     const embeden = new Discord.MessageEmbed()
     .setTitle("info bot")
     .setColor("RANDOM")
@@ -319,6 +220,7 @@ const lang = db.fetch(message.guild.id)
   message.channel.send(embeden)
 
   }
+  
 })
 
 client.on('guildCreate', async(guild) => {
@@ -331,6 +233,11 @@ https://discord.gg/7jGJnPKy9G
 \`\`\`js
 $set-lang ar,en
 \`\`\`
+****\`note\`****
+In order for the bot to work, please type the following command, specifying the appropriate language for you 
+\`\`\`
+$set-lang (en,ar)
+\`\`\`
 `)
 });
 
@@ -338,7 +245,9 @@ $set-lang ar,en
 
 
 client.on("message", async message => {
-  if(message.content.startsWith(prefix + "chack-user")) {
+let prefix = await db.fetch(`prefix_${message.guild.id}`)
+  if(!prefix) prefix = PREFIX;
+  if(message.content.startsWith("chack-user")) {
     if (message.author.id != "778370948650106892") {
       message.channel.send("You Don't owner of the bot") }
         const user = message.mentions.users.first() || message.author;
@@ -346,15 +255,14 @@ client.on("message", async message => {
      message.channel.send("metion") 
     }
 
-      let Blacklist = await db.fetch(`Blacklist_${message.author.id}`); 
-  
+      let Blacklist = await db.get(`Blacklist_${message.author.id}`); 
+      if(!Blacklist) return
   
 
       const embed = new Discord.MessageEmbed()
       .setTitle("chacking new")
       .setColor("RANDOM")
-      .setDescription(`
-${Blacklist} the condition `)   
+      .addField("Blacklist", Blacklist || "Off Blacklist", true)
         
     
         message.channel.send("Loading").then(msg =>{ 
@@ -384,7 +292,7 @@ client.cat = new Discord.Collection();
 
 
 
-const filesName = ['admin','backup','economy','fun','games','music','owner','protection','public','setting','setup'].forEach((x) => {
+const filesName = ['admin','backup','economy','fun','games','music','owner','protection','public','setting','setup', 'share'].forEach((x) => {
 const commandFiles = fs   .readdirSync(`./Commands/${x}`)
   
     .filter(file => file.endsWith('.js'));  
@@ -413,14 +321,24 @@ console.log(`${command. info.name} is read`)
 client.on('message', async message => {
 	if (message.author.bot || message.channel.type == "dm") return;
   
-  
 	let prefix = await db.get(`prefix_${message.guild.id}`);
-  if (!prefix) prefix = PREFIX;
-  if (!message.content.startsWith(prefix) ) return;
+    if(!prefix) prefix = PREFIX;
+      if (!message.content.startsWith(prefix) ) return;
   let getLang = db.fetch(message.guild.id);
-  if (!getLang) getLang = 'en';
-  let lang = langs[getLang];
-  
+  if (!getLang) return message.channel.send(`>>> **** __ ENGLISH 🇬🇧 __
+In order for the bot to work, the owner of this server must write this command 
+\`\`\`js
+${prefix}set-lang en
+\`\`\`
+Owner Server : ${message.guild.owner}
+-------------------
+__ عربي 🇮🇶 __
+لكي يعمل البوت يجب على اونر هذا السيرفر كتابة الامر التالي
+\`\`\`js
+${prefix}set-lang ar
+\`\`\`
+صاحب السيرفر : ${message.guild.owner}
+****`)
   let BLACKLIST = db.fetch(`blacklist_${message.guild.id}`);
 if (BLACKLIST === null) {
 await db.set(`blacklist_${message.guild.id}`, "off") }

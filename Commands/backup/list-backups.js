@@ -2,7 +2,7 @@ const { Discord } = require("discord.js");
 const db = require("quick.db")
 module.exports = {
     info: {
-        name: 'test',
+        name: '',
         cat : [""],
         description: '',
         coolDown: 1

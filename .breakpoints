@@ -3,9 +3,9 @@
     "Commands/owner/server-list.js": [
       {
         "id": "11398c11-22cf-493f-89a5-fa65f4a5bc53",
-        "line": 21,
-        "version": 132,
-        "index": 410
+        "line": 1,
+        "version": 1,
+        "index": 0
       }
     ],
     "events/music/error.js": [
@@ -20,14 +20,20 @@
       {
         "id": "8610da96-8a21-4f02-8130-cf310132fe24",
         "line": 39,
-        "version": 1726,
-        "index": 1248
+        "version": 4,
+        "index": 1247
       },
       {
         "id": "548c7b66-263c-4a31-957e-342b5bf20b46",
-        "line": 85,
-        "version": 1726,
-        "index": 2941
+        "line": 41,
+        "version": 4,
+        "index": 1293
+      },
+      {
+        "id": "69a9e114-85ed-4544-b5a8-6bc78e747baa",
+        "line": 295,
+        "version": 4,
+        "index": 9793
       }
     ]
   }

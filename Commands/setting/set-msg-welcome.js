@@ -43,7 +43,7 @@ module.exports = {
 ****`)
       return 
     }
-db.set(`msgWel_${message.guild.id}`, cmd)
+db.set(`MsgWel_${message.guild.id}`, cmd)
       const lang = db.fetch(message.guild.id)
   if(lang === "ar") {
     message.channel.send(`تم حفظ الرسالة بنجاح 

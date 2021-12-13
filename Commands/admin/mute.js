@@ -44,13 +44,20 @@ if(!tag) {
           return;
          }
 
-tag.roles.add(role)
+tag.roles.add(role).then((m) => {
+                
+            
     const lang = db.fetch(message.guild.id)
   if(lang === "ar") {
     message.channel.send(`**تم إعطاء العضو ميوت
 الشخص : ${tag}**`)
   }else if(lang === "en")
   message.channel.send(`>>> **Done muted of the user\n User : ${tag}**`)
- 
+  var time = args[2]
+        setTimeout(() => {
+            tag.roles.remove(role);
+        }, ms(time))
+ return 
+})
     }
 }

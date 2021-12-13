@@ -29,7 +29,7 @@ module.exports = {
   message.channel.send("**mention the chat **")
       return 
     }
-db.set(`Welcoch_${message.guild.id}`, chanwel.id)
+db.set(`Welco_${message.guild.id}`, chanwel.id)
       const lang = db.fetch(message.guild.id)
   if(lang === "ar") {
     message.channel.send("**تم تحديد الشات**")

@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const db = require("quick.db")
 module.exports = {
     info: {
-        name: 'lock-all',
+        name: 'unlock-all',
         cat : [""],
         description: '',
         coolDown: 1
@@ -22,13 +22,13 @@ const lang = db.fetch(message.guild.id)
       
       let everyone = message.guild.roles.cache.find(hyper => hyper.name === '@everyone');
         message.guild.channels.cache.forEach((channel) => {
-            channel.createOverwrite(everyone, {SEND_MESSAGES: false}).then(() => {
+            channel.createOverwrite(everyone, {SEND_MESSAGES: true}).then(() => {
       });
     })
     const lang = db.fetch(message.guild.id)
   if(lang === "ar") {
-    message.channel.send("**تم قفل جميع الشاتات**")
+    message.channel.send("**تم فتح جميع الشاتات**")
   }else if(lang === "en")
-  message.channel.send("**All chats have been locked **")
+  message.channel.send("**All chats have been unlock **")
     }
 };
