@@ -21,21 +21,21 @@ module.exports = {
       setTimeout(() => {
         message.channel.stopTyping();
       }, Math.random() * (1 - 3) + 1 * 1000);
-      message.channel.send(new Discord.MessageEmbed().setTitle("**banner**").setURL(`https://api.abderrahmane300.repl.co/banner/${message.author.id}`).setImage(`https://api.abderrahmane300.repl.co/banner/${message.author.id}`))
+      message.channel.send(new Discord.MessageEmbed().setTitle("**banner**").setURL(`https://api.abderrahmane300.repl.co/banner/${message.author.id}.gif`).setImage(`https://api.abderrahmane300.repl.co/banner/${message.author.id}.gif`))
     }
     if (member) {
       message.channel.startTyping();
       setTimeout(() => {
         message.channel.stopTyping();
       }, Math.random() * (1 - 3) + 1 * 1000);
-message.channel.send(new Discord.MessageEmbed().setTitle("**banner**").setURL(`https://api.abderrahmane300.repl.co/banner/${member.id}`).setImage(`https://api.abderrahmane300.repl.co/banner/${member.id}`))
+message.channel.send(new Discord.MessageEmbed().setTitle("**banner**").setURL(`https://api.abderrahmane300.repl.co/banner/${member.id}.gif`).setImage(`https://api.abderrahmane300.repl.co/banner/${member.id}.gif`))
     } else if (args[1] && !member) {
       nitro.fetchUser(args[1]).then((userr) => {
         message.channel.stopTyping();
         setTimeout(() => {
           message.channel.stopTyping();
         }, Math.random() * (1 - 3) + 1 * 1000);
-        message.channel.send(new Discord.MessageEmbed().setTitle("**banner**").setURL(`https://api.abderrahmane300.repl.co/banner/${user.id}`).setImage(`https://api.abderrahmane300.repl.co/banner/${user.id}`))
+        message.channel.send(new Discord.MessageEmbed().setTitle("**banner**").setURL(`https://api.abderrahmane300.repl.co/banner/${user.id}.gif`).setImage(`https://api.abderrahmane300.repl.co/banner/${user.id}.gif`))
         });
       }
     }

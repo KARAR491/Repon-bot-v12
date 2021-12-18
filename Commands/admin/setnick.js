@@ -42,11 +42,11 @@ message.guild.member(user).setNickname(user.username)
     const lang = db.fetch(message.guild.id)  
       if(lang === "en") {     
     message.channel.send(`**The username has been changed to its original name 
-The use : ${user.tag}
+The use : <@!${user.id}>
 original name : ${user.username}**`)   
       }else if(lang === "ar") 
         message.channel.send(`**تم تغير اسم العضو الى اسمه الاصلي
-العضو : ${user.username}
+العضو : <@!${user.id}>
 اسمه : ${user.username}**`);   
             return 
         }else if(cmd) {
@@ -54,11 +54,11 @@ original name : ${user.username}**`)  
   const lang = db.fetch(message.guild.id)
   if(lang === "ar") {
     message.channel.send(`**تم تغير اسم العضو
-العضو : ${user.tag}
+العضو : <@!${user.id}>
 الاسم الجديد : ${cmd}**`)
   }else if(lang === "en")
   message.channel.send(`**Done Username changed
-User : ${user}
+User : <@!${user.id}>
 New nickname : ${cmd}**`)
     return 
   }
