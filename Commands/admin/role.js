@@ -23,8 +23,8 @@ module.exports = {
         var args = message.content.split(' ');
         var mention = message.mentions.members.first();
         var user = message.guild.member(mention);
-        var role = message.guild.roles.cache.filter(r => r.name === args[3 ]).first() || message.mentions.roles.first() || message.guild.roles.cache.filter(r => r.id === args[3]).first()
         if (message.author.bot) return;
+      const role = message.mentions.roles.first()   || message.guild.roles.cache.filter(f => f.name.match(new RegExp(args[3], 'i')))  
       if(!args[1]) {
         const emfin = new Discord.MessageEmbed()
           .setColor("BLUE")

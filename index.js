@@ -71,6 +71,29 @@ client.channels.cache.get(channel).send(message)
 });
 
 */
+client.on("message", async message => {
+  let afk = new db.table("AFKs")
+  const authorStatus = await afk.get(`${message.author.id}_${message.guild.id}`)
+   const mentioned = message.mentions.members.first()
+  if (mentioned) {
+    const status = await afk.fetch(`${mentioned.id}_${message.guild.id}`);
+   if (status) {
+      const embed1 = new Discord.MessageEmbed()
+      .setColor("GREEN")
+     .setDescription(`**${mentioned.user.tag} is AFK: ${status}**`)
+      message.channel.send(embed1).then(i => i.delete({timeout: 10000}));
+    }
+  }
+   if (authorStatus) {
+   afk.delete(`${message.author.id}_${message.guild.id}`)
+    message.guild.member(message.author).setNickname(message.author.username)
+    const embed2 = new Discord.MessageEmbed()
+    .setColor("GREEN")
+    .setDescription(`**Welcome Back __${message.author.tag}__, you are no longer AFK**`)
+
+    message.channel.send(embed2).then(i => i.delete({timeout: 10000}));
+ }
+}) 
 
 client.on('guildMemberAdd', async member => {
 	const channel = db.get(`Welco_${member.guild.id}`);
