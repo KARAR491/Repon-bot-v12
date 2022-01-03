@@ -25,6 +25,8 @@ module.exports = {
         var user = message.guild.member(mention);
         if (message.author.bot) return;
       const role = message.mentions.roles.first()   || message.guild.roles.cache.filter(f => f.name.match(new RegExp(args[3], 'i')))  
+      const r1 = message.guild.roles(role) 
+
       if(!args[1]) {
         const emfin = new Discord.MessageEmbed()
           .setColor("BLUE")
@@ -76,7 +78,7 @@ message.channel.send(new Discord.MessageEmbed().setTitle("**Add role**").setColo
 Done add role to member 
 The Member : ${user}
 By : ${message.author}
-The Role : ${role}
+The Role : ${r1}
 **`));
             var time = args[4]
         setTimeout(() => {

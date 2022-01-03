@@ -11,7 +11,8 @@ module.exports = {
         coolDown: 1
     },
     run: async (message, args, prefix, client) => {
-      const d = moment.duration(message.client.uptime); 
+      const enb = Date.now()     
+    const d = moment.duration(message.client.uptime); 
       const weeks = (d.weeks() == 1) ? `${d.weeks()} week` : `${d.weeks()} weeks`; 
       const days = (d.days() == 1) ? `${d.days()} day` : `${d.days()} days`; 
       const hours = (d.hours() == 1) ? `${d.hours()} hour` : `${d.hours()} hours`;
@@ -25,12 +26,12 @@ CPU Usage :: ${await cpu.usage()} %
 RAM :: ${totalMemMb} MB 
 RAM Usage :: ${usedMemMb} MB `;
       let embed = new MessageEmbed()
-.setTitle(`**${client.user.tag}**`)
+.setTitle(`**Info Bot**`)
 .setColor("RANDOM")
 .setDescription(`>>> **** __BOT NAME__ : <a:emoji_1:910564380888956938> 
 ${client.user.username}
 __PING__ : <a:emoji_1:910564380888956938>
-${client.ws.ping}
+${Date.now() - enb}
 __RUNTIME__ : <a:emoji_1:910564380888956938>
 ${weeks}, ${days}, ${hours}, ${minutes}, ${seconds}
 __BOT ID__ : <a:emoji_1:910564380888956938>

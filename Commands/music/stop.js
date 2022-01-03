@@ -1,9 +1,8 @@
-const { MessageEmbed } = require("discord.js");
 const Discord = require("discord.js")
 const db = require("quick.db")
 module.exports = {
     info: {
-        name: '',
+        name: 'stop',
         cat : [""],
         description: '',
         coolDown: 1
@@ -28,25 +27,29 @@ ${prefix}set-lang ar
 او منشن البوت لكي يتم تحديد اللغة تلقائيا
 ****`);
 
+      if (!message.member.voice.channel) {
+        if(lang === "en") {
+    message.channel.send(`**You are not in an audio room  **`)
+  }else if(lang === "ar")
+        message.channel.send(`انت لست موجود غي روم صوتي !`);
+      return
+
+
+      }
+    if (!client.player.getQueue(message)) {
+      if(lang === "en") {
+    message.channel.send(`**No songs played **`)
+  }else if(lang === "ar")
+      message.channel.send(`لم يتم تشغيل اي اغنيه !`);
+         return
+    }
+    client.player.setRepeatMode(message, false);
+    client.player.stop(message);
+if(lang === "en") {
+    message.channel.send(`**The songs have been paused and the waiting list has been cleared **`)
+  }else if(lang === "ar")
+    message.channel.send(` تم ايقاف الاغاني و مسح قائمه الانتظار !`);
+
 
     }
 }
-
-
-
-//prime 
-const prime = db.fetch(`prime_bot_${message.guild.id}`)
-if(!prime) {
-  
-  const lang = db.fetch(message.guild.id) 
-  if(lang === "ar") {    
-message.channel.send(`**هذا السيرفر ليس برايم**`)
-  }else if(lang === "en")
-message.channel.send(`**This Server Don't Have Prime**`).catch((m) => {
-  const lang = db.fetch(message.guild.id)
-  if(lang === "ar") {
-    message.channel.send("**هذا السيرفر برايم**")
-  }else if(lang === "en")
-  message.channel.send("**this server prime**")
-})
-} 

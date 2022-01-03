@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const client = new Discord.Client()
 const db = require("quick.db")
 module.exports = {
   info:{
@@ -11,10 +10,21 @@ module.exports = {
     usags:"[prefix] + ping",
     per:"No Permission"
   },
-    
     run: async (message, args, prefix, client) => {
-      message.channel
-			.send('pong!')
-			.then(m => m.edit(`\`\`\`Ping: ${client.ws.ping}\`\`\``));
+      const end = Date.now()
+        const enb = Date.now()
+      const e = end - enb
+
+
+      const embed = new Discord.MessageEmbed()
+          .setTitle("Ping Bot")
+          .setColor("BLUE")
+          .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
+          .setFooter(`By ${message.author.tag}`)
+          .setTimestamp()
+          .setDescription(`>>> ****__Ping__\n\`${Date.now() - end}\`
+__API__\n${Date.now() - enb + "50"}
+****`)
+        message.channel.send('pong!').then(m => m.edit(embed));
     }
 };

@@ -8,17 +8,56 @@ module.exports = {
         description: 'eval command of the owner',
         coolDown: 1
     },
-    run: async (message, prefix, client) => {
-      
+    run: async (message, args, prefix, client) => {
+      try {
+        if(message.author.id == "778370948650106892") {
+           
+            
+        
 
-    if (message.author.id != "778370948650106892") {
-        //Only allow bot developer(s) to use the eval command, not all users
+        if(!args[0]) {
+		    return message.channel.send({embed: {
+                color: 16734039,
+                description: "Please put the code to evaluate!"
+            }});
+        }
 
-        const noToken = new Discord.MessageEmbed()
-        .setColor('RANDOM')
-        .setDescription('OI WHO GAVE YOU PERMISSION TO USE EVAL!!!nn*back off...*')
-       return message.channel.send(noToken)
-    }
+            if (args.join(" ").toLowerCase().includes("token")) {
+            return message.channel.send({embed: {
+                color: 16734039,
+                description: "You can't use this (This for safetly resons)!"
+            }});
+            }
+			
+			if (args.join(" ").toLowerCase().includes("process.env")) {
+            return message.channel.send({embed: {
+                color: 16734039,
+                description: "You can't use this (This for safetly resons)!"
+            }});
+            }
 
+            const toEval = args.join(" ")
+            const evaluated = eval(toEval)
+
+            let embed = new Discord.MessageEmbed()
+                .setColor("RANDOM")
+                .setTimestamp()
+                .setTitle("Eval")
+                .addField("To evaluate:", `\`\`\`js\n${beautify(args.join(" "), { format: "js"})}\n\`\`\``)
+                .addField("Evaluated:", evaluated)
+                .addField("Type of:", typeof(evaluated));
+
+            message.channel.send(embed);
+        }
+} catch (err) {
+let embed = new Discord.MessageEmbed()
+.setColor("#FF0000")
+.setTitle("Error!")
+.setDescription("**Error Code:** *" + err + "*")
+
+.setFooter("Bot created by " , `<@!778370948650106892>`, true)
+ .setTimestamp()
+ return message.channel.send(embed);
+      }
     }
 }

@@ -12,27 +12,18 @@ module.exports = {
 		coolDown: 1
 	},
 	run: async (message, args, prefix, client) => {
+    const { fetchFlags } = require("discord.js")
 		const cmd = message.content.split(' ');
-		const user =
-			message.mentions.users.first() ||
-			message.author ||
-			message.guild.members.cache.get(cmd[1]) ||
-			client.users.cache.get(cmd[1]);
+		        let use = message.mentions.members.first() || message.author
+    const user = use
 		const member = message.guild.member(user);
+    const play = member.presence.activities[0] ? member.presence.activities[0].state : `User isn't have a custom status!` 
 		const title = db.fetch(`title-user_${user.id}`);
-	/*	if (!title) {
-		db.set(`title-user_${user.id}`, "No Title")
-		const lang = db.fetch(message.guild.id);
-		if (lang === 'ar') {
-			message.channel.send(`**يرجى كتابة الامر مرة اخرى**`);
-		} else if (lang === 'en')
-      message.channel.send(`**Please write it again **`);
-		return
-  }*/
   const banner = `https://api.abderrahmane300.repl.co/banner/${user.id}.gif`
+let inviteCount = 0;
 
 const bot = user.bot;
-		const flags = user.flags || await user.fetchFlags();
+		const flags = user.flags || user.fetchFlags();
     let cache = [];
 		if (flags.toArray().includes('DISCORD_PARTNER'))
 			cache.push('<:emoji_1:919301931908870144>');
@@ -93,17 +84,7 @@ const bot = user.bot;
 			.join(` | `)
 			.replace('| @everyone', '');
 		const arem = new Discord.MessageEmbed();
-		/*
-  .setTitle(`${uss} معلومات`)
-.setThumbnail(uss.user.displayAvatarURL({dynamic: true,size:1024}))
-.setColor(uss.user.displayHexColor)
-
-.addField("ايدي", uss.user.id, true)
-  .addField("الرتب الخاصة بي", `${uss.roles.cache.map(roles => `${roles}`)}`, true)
-.addField("بوت", uss.user.bot,true) 
-.addField("دخولك للسيرفر", uss.joinedAt)
-.addField("دخولك الى الديسكورد", `\`${moment(uss.user.createdAt).format('M/D/YYYY')}\` [ ${moment(uss.user.createdAt).fromNow()} ]` , true)
-*/
+		
 		//en
 
 		let enem = new Discord.MessageEmbed()
@@ -117,23 +98,26 @@ const bot = user.bot;
 			.addField('Id', user.id, true)
 			.addField('Tag', '#' + user.discriminator, true)
 			.addField('Bot', `${bot}`)
+      .addField("Mutuel Servers", `\`${client.guilds.cache.filter(g => g.members.cache.get(user.id)).size}\``, true)
 			.addField('Title', title || 'No Title')
 			.addField('Presence', statusFull, true)
+      .addField("Playing", play, true)
 			.addField('Badges', emojis || 'No Badges')
+      .addField("Highest Role", member.roles.highest, true)
 			.addField('roles', roles)
 			.addField(
 				'joinedAt',
-				`****${moment(user.joinedAt).toString().split(' ').slice(0, 4).join(' ')} | <t:${Math.floor(member.joinedAt/1000.0)}:R>****`
+				`****${moment(user.joinedAt).toString().split(' ').slice(0, 4).join(' ')} | <t:${Math.floor(member.joinedAt/1000.0)}:R> ****`
 			)
 			.addField(
 				'CreateAt',
-				`****${moment(user.createdAt).toString().split(' ').slice(0, 4).join(' ')} | <t:${Math.floor(user.createdAt/1000.0)}:R>****`
+				`****${moment(user.createdAt).toString().split(' ').slice(0, 4).join(' ')} | <t:${Math.floor(user.createdAt/1000.0)}:R> ****`
 			)
 			.setImage(`${banner}`);
 
 		const lang = db.fetch(message.guild.id);
 		if (lang === 'ar') {
-			message.channel.send(arem).then(t => cache = []);
+			message.channel.send(enem).then(t => cache = []);
 		} else if (lang === 'en') 
       message.channel.send(enem).then(t => cache = []);
 	}

@@ -1,14 +1,17 @@
 const { MessageEmbed } = require("discord.js");
-const Discord = require("discord.js")
 const db = require("quick.db")
 module.exports = {
     info: {
-        name: '',
-        cat : [""],
+        name: 'test',
+        cat : ["t"],
         description: '',
-        coolDown: 1
+        coolDown: 1,
+        usags: "",
+        per:"",
+        category:""
     },
-    run: async (message, args, prefix, client) => {
+    run: async (message, prefix, client) => {
+    
 let getLang = db.fetch(message.guild.id);
 	if (!getLang)
 		return message.channel.send(`>>> **** __ ENGLISH 🇬🇧 __
@@ -26,27 +29,17 @@ ${prefix}set-lang ar
 \`\`\`
 صاحب السيرفر : ${message.guild.owner}
 او منشن البوت لكي يتم تحديد اللغة تلقائيا
-****`);
-
-
-    }
-}
-
-
-
-//prime 
-const prime = db.fetch(`prime_bot_${message.guild.id}`)
+****`)
+      const prime = db.fetch(`prime_bot_${message.guild.id}`)
 if(!prime) {
   
   const lang = db.fetch(message.guild.id) 
   if(lang === "ar") {    
 message.channel.send(`**هذا السيرفر ليس برايم**`)
   }else if(lang === "en")
-message.channel.send(`**This Server Don't Have Prime**`).catch((m) => {
-  const lang = db.fetch(message.guild.id)
-  if(lang === "ar") {
-    message.channel.send("**هذا السيرفر برايم**")
-  }else if(lang === "en")
-  message.channel.send("**this server prime**")
-})
-} 
+message.channel.send(`**This Server Don't Have Prime**`)
+  return 
+}
+message.channel.send("this server prime | هذا السيرفر برايم")
+    }
+}
